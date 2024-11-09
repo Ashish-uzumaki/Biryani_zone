@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="./styles.css">
+    </head> 
+    <body>
+        <div class="container">
+            <div>
+                <h1 class="header_text">Hey Disha, I have a very serious question... 🧐</h1>
+                <h1 class="header_text">Can we be exclusive? No more swipe-lefts, no more 'just friends,’ and I promise to stop pretending I'm chill when you mention other guys 😏</h1>
+            </div>
+            <div class="gif_container">
+                <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExcDdtZ2JiZDR0a3lvMWF4OG8yc3p6Ymdvd3g2d245amdveDhyYmx6eCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/cLS1cfxvGOPVpf9g3y/giphy.gif" alt="Cute animated illustration">
+            </div>
+            <div class="buttons">
+                <button class="btn" id="yesButton" onclick="nextPage()">Yes, obviously! 😍</button>
+                <button class="btn" id="noButton" onmouseover="moveButton()" onclick="moveButton()">Umm, nope 🤷‍♀️</button>
+                <script>
+                    function nextPage() {
+                        alert("Yay! You’re officially my chicken now 🐥💖");
+                        window.location.href = "yes.html";
+                    }
+                    
+                    function moveButton() {
+                        const button = document.getElementById('noButton');
+                        var x = Math.random() * (window.innerWidth - button.offsetWidth) - 85;
+                        var y = Math.random() * (window.innerHeight - button.offsetHeight) - 48;
+                        button.style.left = `${x}px`;
+                        button.style.top = `${y}px`;
+                        
+                        // Add a playful message when the button moves
+                        button.innerHTML = "Arrey Arrey! 😝";
+                    }
+                </script> 
+            </div>
+        </div>
+    </body> 
+</html>
