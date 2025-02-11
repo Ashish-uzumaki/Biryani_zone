@@ -1,99 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Valentine Proposal</title>
-    <link rel="stylesheet" href="./styles.css">
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-    <script>
-        (function() {
-            emailjs.init("IJfoAjKVXoXd1JNJh"); // Replace with your EmailJS Public Key
-        })();
+    <head>
+        <link rel="stylesheet" href="./styles.css">
+        <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+        <script>
+            (function() {
+                emailjs.init("IJfoAjKVXoXd1JNJh"); // Initialize EmailJS with your public key
+            })();
 
-        function sendEmailToMe() {
-            emailjs.send("service_D", "template_4h4k042", {
-                to_email: "1998ashishsingh@gmail.com", // Only your email
-                subject: "🔥 She said YES! 🎉🥰",
-                message: "Ashish, it's official! Your chicken has agreed to be your Valentine! 💖"
-            }).then(function(response) {
-                alert("Yay! She said YES! Check your email 📩🎉");
+            function sendEmailToMe() {
+                emailjs.send("service_D", "template_4h4k042", {
+                    to_email: "1998ashishsingh@gmail.com", // Your email only
+                    subject: "🔥 She said YES! 🎉🥰",
+                    message: "Ashish, it's official! Your chicken has agreed to be your Valentine! 💖"
+                }).then(function(response) {
+                    console.log("Email sent successfully:", response);
+                    nextPage(); // Call nextPage() after email is sent
+                }, function(error) {
+                    console.error("Email failed:", error);
+                    alert("Oops! Something went wrong, but she still said yes! 🥰");
+                    nextPage(); // Redirect even if email fails
+                });
+            }
+
+            function nextPage() {
+                alert("Yay! You’re officially my chicken now 🐥💖");
                 window.location.href = "yes.html";
-            }, function(error) {
-                alert("Oops! Something went wrong, but she still said yes! 🥰");
-                console.error("Email failed:", error);
-            });
-        }
-
-        function moveButton() {
-            const button = document.getElementById('noButton');
-            var x = Math.random() * (window.innerWidth - button.offsetWidth) - 85;
-            var y = Math.random() * (window.innerHeight - button.offsetHeight) - 48;
-            button.style.left = `${x}px`;
-            button.style.top = `${y}px`;
-
-            // Playful message when button moves
-            button.innerHTML = "Arrey Arrey! 😝";
-        }
-    </script>
-    <style>
-        /* Add some basic styling */
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin-top: 50px;
-        }
-        .container {
-            max-width: 600px;
-            margin: auto;
-        }
-        .header_text {
-            font-size: 24px;
-            font-weight: bold;
-        }
-        .body_text {
-            font-size: 18px;
-        }
-        .gif_container img {
-            width: 300px; /* Adjust size as needed */
-            height: auto;
-            margin-top: 20px;
-        }
-        .buttons {
-            margin-top: 20px;
-        }
-        .btn {
-            font-size: 18px;
-            padding: 10px 20px;
-            margin: 10px;
-            cursor: pointer;
-        }
-        #noButton {
-            position: absolute;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1 class="header_text">Hey My Chicken, I have a very serious question... 🧐</h1>
-        <h1 class="header_text">Will you be my Valentine? ❤️</h1>
-        <p class="body_text">
-            I solemnly swear to never yell at you on the badminton court.  
-            I’ll serve you better tea.  
-            No more jokes about your *elite* egg-boiling skills (probably).  
-            And your legendary sandwich? It’ll be my second favorite food…  
-            first will always be you (unless biryani objects).  
-            So, what do you say? 😏  
-        </p>
-
-        <div class="gif_container">
-            <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExcDdtZ2JiZDR0a3lvMWF4OG8yc3p6Ymdvd3g2d245amdveDhyYmx6eCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/cLS1cfxvGOPVpf9g3y/giphy.gif" alt="Cute animated illustration">
+            }
+        </script>
+    </head> 
+    <body>
+        <div class="container">
+            <div>
+                <h1 class="header_text">Hey My Chicken, I have a very serious question... 🧐</h1>
+                <h1 class="header_text">Will you be my Valentine? ❤️</h1>
+                <p class="body_text">I solemnly swear to never yell at you on the badminton court. I’ll serve you better tea. No more jokes about your *elite* egg-boiling skills (probably). And your legendary sandwich? It’ll be my second favorite food… first will always be you (unless biryani Objects). So, what do you say? 😏</p>
+            </div>
+            <div class="gif_container">
+                <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExcDdtZ2JiZDR0a3lvMWF4OG8yc3p6Ymdvd3g2d245amdveDhyYmx6eCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/cLS1cfxvGOPVpf9g3y/giphy.gif" alt="Cute animated illustration">
+            </div>
+            <div class="buttons">
+                <button class="btn" id="yesButton" onclick="sendEmailToMe()">Yes, obviously! 😍</button>
+                <button class="btn" id="noButton" onmouseover="moveButton()" onclick="moveButton()">Umm, nope 🤷‍♀️</button>
+                <script>
+                    function moveButton() {
+                        const button = document.getElementById('noButton');
+                        var x = Math.random() * (window.innerWidth - button.offsetWidth) - 85;
+                        var y = Math.random() * (window.innerHeight - button.offsetHeight) - 48;
+                        button.style.left = `${x}px`;
+                        button.style.top = `${y}px`;
+                        
+                        // Add a playful message when the button moves
+                        button.innerHTML = "Arrey Arrey! 😝";
+                    }
+                </script> 
+            </div>
         </div>
-
-        <div class="buttons">
-            <button class="btn" id="yesButton" onclick="sendEmailToMe()">Yes, obviously! 😍</button>
-            <button class="btn" id="noButton" onmouseover="moveButton()" onclick="moveButton()">Umm, nope 🤷‍♀️</button>
-        </div>
-    </div>
-</body>
+    </body> 
 </html>
