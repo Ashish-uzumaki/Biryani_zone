@@ -4,27 +4,26 @@
         <link rel="stylesheet" href="./styles.css">
         <script>
             function sendWebhook() {
-                const webhookUrl = "https://webhook.site/c9baabba-8644-42c1-9c6d-6969fdaca6f2";
-                
+                const webhookUrl = "https://webhook.site/c9baabba-8644-42c1-9c6d-6969fdaca6f2"; // Your Webhook URL
+
                 const payload = {
                     content: "🔥 She said YES! 🎉🥰 - Ashish, it's time to celebrate!"
                 };
 
                 fetch(webhookUrl, {
                     method: "POST",
+                    mode: "no-cors", // Bypass CORS issue
                     headers: {
                         "Content-Type": "application/json"
                     },
                     body: JSON.stringify(payload)
                 })
-                .then(response => response.json())
-                .then(data => {
-                    console.log("Webhook sent successfully!", data);
+                .then(() => {
                     alert("Yay! You’re officially my chicken now 🐥💖 (Also, I just got notified!)");
                     window.location.href = "yes.html";
                 })
                 .catch(error => {
-                    console.error("Failed to send webhook", error);
+                    console.error("Webhook failed:", error);
                     alert("Oops! Something went wrong. But you're still my chicken! 🐥");
                 });
             }
@@ -42,7 +41,7 @@
     <body>
         <div class="container">
             <div>
-                <h1 class="header_text">Hey Yo My Chicken, I have a very serious question... 🧐</h1>
+                <h1 class="header_text">Hey My Chicken, I have a very serious question... 🧐</h1>
                 <h1 class="header_text">Will you be my Valentine? ❤️</h1>
                 <p class="body_text">I solemnly swear to never yell at you on the badminton court. I’ll serve you better tea. No more jokes about your *elite* egg-boiling skills (probably). And your legendary sandwich? It’ll be my second favorite food… first will always be you (unless biryani objects). So, what do you say? 😏</p>
             </div>
