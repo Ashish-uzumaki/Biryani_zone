@@ -1,57 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <link rel="stylesheet" href="./styles.css">
-        <script>
-            function sendWebhook() {
-                const webhookUrl = "https://webhook.site/c9baabba-8644-42c1-9c6d-6969fdaca6f2"; // Your Webhook URL
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine Proposal</title>
+    <link rel="stylesheet" href="./styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+        (function() {
+            emailjs.init("IJfoAjKVXoXd1JNJh"); // Replace with your EmailJS Public Key
+        })();
 
-                const payload = {
-                    content: "🔥 She said YES! 🎉🥰 - Ashish, it's time to celebrate!"
-                };
+        function sendEmailToMe() {
+            emailjs.send("service_D", "template_4h4k042", {
+                to_email: "1998ashishsingh@gmail.com", // Only your email
+                subject: "🔥 She said YES! 🎉🥰",
+                message: "Ashish, it's official! Your chicken has agreed to be your Valentine! 💖"
+            }).then(function(response) {
+                alert("Yay! She said YES 📩🎉");
+                window.location.href = "yes.html";
+            }, function(error) {
+                alert("Oops! Something went wrong, but she still said yes! 🥰");
+                console.error("Email failed:", error);
+            });
+        }
 
-                fetch(webhookUrl, {
-                    method: "POST",
-                    mode: "no-cors", // Bypass CORS issue
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify(payload)
-                })
-                .then(() => {
-                    alert("Yay! You’re officially my chicken now 🐥💖 (Also, I just got notified!)");
-                    window.location.href = "yes.html";
-                })
-                .catch(error => {
-                    console.error("Webhook failed:", error);
-                    alert("Oops! Something went wrong. But you're still my chicken! 🐥");
-                });
-            }
+        function moveButton() {
+            const button = document.getElementById('noButton');
+            var x = Math.random() * (window.innerWidth - button.offsetWidth) - 85;
+            var y = Math.random() * (window.innerHeight - button.offsetHeight) - 48;
+            button.style.left = `${x}px`;
+            button.style.top = `${y}px`;
 
-            function moveButton() {
-                const button = document.getElementById('noButton');
-                var x = Math.random() * (window.innerWidth - button.offsetWidth) - 85;
-                var y = Math.random() * (window.innerHeight - button.offsetHeight) - 48;
-                button.style.left = `${x}px`;
-                button.style.top = `${y}px`;
-                button.innerHTML = "Arrey Arrey! 😝";
-            }
-        </script>
-    </head> 
-    <body>
-        <div class="container">
-            <div>
-                <h1 class="header_text">Hey My Chicken, I have a very serious question... 🧐</h1>
-                <h1 class="header_text">Will you be my Valentine? ❤️</h1>
-                <p class="body_text">I solemnly swear to never yell at you on the badminton court. I’ll serve you better tea. No more jokes about your *elite* egg-boiling skills (probably). And your legendary sandwich? It’ll be my second favorite food… first will always be you (unless biryani objects). So, what do you say? 😏</p>
-            </div>
-            <div class="gif_container">
-                <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExcDdtZ2JiZDR0a3lvMWF4OG8yc3p6Ymdvd3g2d245amdveDhyYmx6eCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/cLS1cfxvGOPVpf9g3y/giphy.gif" alt="Cute animated illustration">
-            </div>
-            <div class="buttons">
-                <button class="btn" id="yesButton" onclick="sendWebhook()">Yes, obviously! 😍</button>
-                <button class="btn" id="noButton" onmouseover="moveButton()" onclick="moveButton()">Umm, nope 🤷‍♀️</button>
-            </div>
+            // Playful message when button moves
+            button.innerHTML = "Arrey Arrey! 😝";
+        }
+    </script>
+    <style>
+        /* Add some basic styling */
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+        }
+        .header_text {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .body_text {
+            font-size: 18px;
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+        .btn {
+            font-size: 18px;
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+        }
+        #noButton {
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="header_text">Hey My Chicken, I have a very serious question... 🧐</h1>
+        <h1 class="header_text">Will you be my Valentine? ❤️</h1>
+        <p class="body_text">
+            I solemnly swear to never yell at you on the badminton court.  
+            I’ll serve you better tea.  
+            No more jokes about your *elite* egg-boiling skills (probably).  
+            And your legendary sandwich? It’ll be my second favorite food…  
+            first will always be you (unless biryani objects).  
+            So, what do you say? 😏  
+        </p>
+
+        <div class="buttons">
+            <button class="btn" id="yesButton" onclick="sendEmailToMe()">Yes, obviously! 😍</button>
+            <button class="btn" id="noButton" onmouseover="moveButton()" onclick="moveButton()">Umm, nope 🤷‍♀️</button>
         </div>
-    </body> 
+    </div>
+</body>
 </html>
