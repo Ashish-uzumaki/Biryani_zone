@@ -17,7 +17,7 @@
                 subject: "🔥 She said YES! 🎉🥰",
                 message: "Ashish, it's official! Your chicken has agreed to be your Valentine! 💖"
             }).then(function(response) {
-                alert("Yay! She said YES 📩🎉");
+                alert("Yay! She said YES! Check your email 📩🎉");
                 window.location.href = "yes.html";
             }, function(error) {
                 alert("Oops! Something went wrong, but she still said yes! 🥰");
@@ -54,6 +54,11 @@
         .body_text {
             font-size: 18px;
         }
+        .gif_container img {
+            width: 300px; /* Adjust size as needed */
+            height: auto;
+            margin-top: 20px;
+        }
         .buttons {
             margin-top: 20px;
         }
@@ -80,6 +85,10 @@
             first will always be you (unless biryani objects).  
             So, what do you say? 😏  
         </p>
+
+        <div class="gif_container">
+            <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExcDdtZ2JiZDR0a3lvMWF4OG8yc3p6Ymdvd3g2d245amdveDhyYmx6eCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/cLS1cfxvGOPVpf9g3y/giphy.gif" alt="Cute animated illustration">
+        </div>
 
         <div class="buttons">
             <button class="btn" id="yesButton" onclick="sendEmailToMe()">Yes, obviously! 😍</button>
